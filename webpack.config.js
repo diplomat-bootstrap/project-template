@@ -12,6 +12,10 @@ module.exports = {
     },
     devtool: "source-map",
     module: {
+        preLoaders: [{
+            test: /\.js$/,
+            loader: 'baggage?[file].html&[file].css'
+        }],
         loaders: [{
             test: /\.sass$/,
             loaders: ["style", "css", "sass?config=otherSassLoaderConfig"]
@@ -21,7 +25,7 @@ module.exports = {
             exclude: /node_modules/
         }, {
             test: /\.html$/,
-            loader: "raw"
+            loader: 'ngtemplate?relativeTo=' + __dirname + '/!raw'
         }, {
             test: /\.styl$/,
             loaders: ["style", "css", "stylus"]

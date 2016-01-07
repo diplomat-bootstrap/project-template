@@ -8,7 +8,7 @@ require("./home/controllers/home.js")(ngModule);
 ngModule.config(["$routeProvider", ($routeProvider) => {
     $routeProvider
         .when("/home", {
-            templateUrl: "./app/home/templates/index.html",
+            templateUrl: require("./home/templates/index.html"),
             controller: "HomeController"
         }).otherwise({
             redirectTo: "/home"
