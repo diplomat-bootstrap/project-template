@@ -1,12 +1,19 @@
 var webpack = require("webpack");
 
+
 module.exports = {
-    entry: "./app/application.js",
+    context: __dirname + "/app",
+    entry: "./application.js",
     output: {
         path: __dirname + "/dist",
         publicPath: "/dist/",
         filename: "bundle.js"
     },
+    plugins: [
+        new webpack.DefinePlugin({
+            ON_TEST: process.env.NODE_ENV === "test"
+        })
+    ],
     resolve: {
         extensions: ["", ".js"]
     },
